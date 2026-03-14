@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,8 +14,8 @@
             --text-main: #f2f2f2;
             --text-muted: #888888;
             
-            /* NUEVO COLOR DE ACENTO NARANJA VIBRANTE */
-            --accent-color: #ff9f43; /* Naranja tech moderno */
+            /* VIBRANT ORANGE ACCENT COLOR */
+            --accent-color: #ff9f43; /* Modern tech orange */
             --accent-hover: #e68a2e;
             
             --border-muted: #222222;
@@ -34,17 +34,12 @@
             color: var(--text-main);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
-            padding: 2rem;
+            padding: 0; /* Removing body padding to let the banner breathe */
             opacity: 0;
             animation: fadeInBody 1s ease-out forwards;
         }
 
-        main {
-            max-width: 680px;
-            margin: 5rem auto;
-        }
-
-        /* --- Animaciones Keyframes --- */
+        /* --- Keyframes Animations --- */
         @keyframes fadeInBody {
             to { opacity: 1; }
         }
@@ -60,23 +55,55 @@
             }
         }
 
-        /* --- Estilos de Sección con Animación --- */
+        /* --- Animated Section Styles --- */
         header, section, footer {
             opacity: 0;
             animation: slideInUp var(--animation-speed) ease-out forwards;
         }
 
-        header { animation-delay: 0.2s; margin-bottom: 5rem; text-align: center;}
+        header {
+            animation-delay: 0.2s;
+            margin-bottom: 5rem;
+            text-align: center;
+            /* HEADER BANNER INTEGRATION */
+            position: relative;
+            background-image: url('image_0.png');
+            background-size: cover;
+            background-position: center;
+            padding: 8rem 2rem 5rem 2rem; /* Large top padding to move text off the image, bottom padding for breathing room */
+        }
+
+        /* Dark overlay for readability over the photo */
+        header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4); /* Subtle dark overlay */
+            z-index: 1;
+        }
+
+        main {
+            max-width: 680px;
+            margin: 0 auto 5rem auto; /* Large bottom margin for pie de página separation */
+            position: relative;
+            z-index: 2; /* Main content above header overlay */
+        }
+
         section:nth-of-type(1) { animation-delay: 0.4s; }
         section:nth-of-type(2) { animation-delay: 0.6s; }
         footer { animation-delay: 0.8s; }
 
         h1 {
-            font-size: 2.2rem;
+            font-size: 2.8rem;
             font-weight: 600;
             margin-bottom: 1rem;
-            letter-spacing: -0.04em;
+            letter-spacing: -0.05em;
             color: var(--text-main);
+            position: relative;
+            z-index: 3; /* Title above overlay and other content */
         }
 
         .bio {
@@ -84,6 +111,8 @@
             font-size: 1.05rem;
             max-width: 580px;
             margin: 0 auto 1.5rem auto;
+            position: relative;
+            z-index: 3;
         }
 
         .bio a {
@@ -94,7 +123,7 @@
         }
 
         .bio a:hover {
-            /* COLOR EN ENLACES DE BIO */
+            /* COLOR ON BIO LINKS */
             border-bottom-color: var(--accent-color);
             color: var(--accent-color);
         }
@@ -135,10 +164,10 @@
 
         .project-card:hover {
             transform: translateY(-4px);
-            /* COLOR EN BORDE Y SOMBRA DE TARJETA */
+            /* COLOR ON CARD BORDER AND SHADOW */
             border-color: var(--accent-color);
             background-color: #161616;
-            box-shadow: 0 8px 30px rgba(255, 159, 67, 0.1); /* Brillo sutil naranja */
+            box-shadow: 0 8px 30px rgba(255, 159, 67, 0.1); /* Subtle orange glow */
         }
 
         .project-info {
@@ -154,7 +183,7 @@
             transition: color 0.3s ease;
         }
         
-        /* El título también cambia ligeramente de color en hover */
+        /* The title also changes color slightly on hover */
         .project-card:hover .project-title {
             color: #fff;
         }
@@ -177,8 +206,8 @@
         .project-lang {
             font-size: 0.8rem;
             font-weight: 600;
-            /* COLOR EN ETIQUETA DE LENGUAJE */
-            color: #000; /* Texto oscuro para contraste */
+            /* COLOR ON LANGUAGE TAG */
+            color: #000; /* Dark text for contrast */
             background: var(--accent-color);
             padding: 0.3rem 0.8rem;
             border-radius: 20px;
@@ -205,23 +234,25 @@
         }
 
         .tech-tag:hover {
-            /* COLOR EN ETIQUETAS DE TECNOLOGÍA */
+            /* COLOR ON TECH TAGS */
             border-color: var(--accent-color);
             color: var(--accent-color);
             background-color: rgba(255, 159, 67, 0.03);
             transform: scale(1.03);
         }
 
-        /* --- Footer --- */
+        /* --- Pie de página (Footer) --- */
         footer {
             margin-top: 6rem;
-            padding-top: 2.5rem;
+            padding: 2.5rem 2rem 1.5rem 2rem;
             border-top: 1px solid var(--border-muted);
             display: flex;
             justify-content: space-between;
             align-items: center;
             color: var(--text-muted);
             font-size: 0.95rem;
+            position: relative;
+            z-index: 2;
         }
 
         footer a {
@@ -238,8 +269,9 @@
 
         /* --- Responsive --- */
         @media (max-width: 650px) {
-            main { margin: 3rem auto; padding: 0 1rem; }
-            h1 { font-size: 1.9rem; }
+            header { padding: 6rem 1rem 3rem 1rem; }
+            main { margin: 0 auto 3rem auto; padding: 0 1rem; }
+            h1 { font-size: 2.2rem; }
             .project-card {
                 flex-direction: column;
                 align-items: flex-start;
@@ -258,31 +290,32 @@
                 flex-direction: column;
                 gap: 1rem;
                 text-align: center;
+                padding: 2.5rem 1rem 1.5rem 1rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <main>
-        <header>
-            <h1>Álvaro Iglesias Ávila</h1>
-            <p class="bio">
-                Estudiante de Ingeniería Informática en la <strong>Universidad de León</strong>. Apasionado por la ciberseguridad y la robótica. Actualmente expandiendo mis conocimientos junto al Grupo de Investigación en Robótica Móvil. Buscando crear software eficiente, optimizado y seguro.
-            </p>
-            <p class="bio">
-                <a href="https://github.com/aiglea01" target="_blank">github.com/aiglea01</a>
-            </p>
-        </header>
+    <header>
+        <h1>Álvaro Iglesias Ávila</h1>
+        <p class="bio">
+            Computer Engineering student at the <strong>University of León</strong>. Passionate about cybersecurity and robotics. Currently expanding my knowledge alongside the Mobile Robotics Research Group. Seeking to create efficient, optimized, and secure software.
+        </p>
+        <p class="bio">
+            <a href="https://github.com/aiglea01" target="_blank">github.com/aiglea01</a>
+        </p>
+    </header>
 
+    <main>
         <section>
-            <h2>Proyectos Destacados</h2>
+            <h2>Featured Projects</h2>
             <div class="project-grid">
                 
                 <a href="https://github.com/scsaule/heliport-geoposition-optimization" target="_blank" class="project-card">
                     <div class="project-info">
                         <span class="project-title">Heliport Geoposition Optimization</span>
-                        <span class="project-desc">Optimización en Python para la ubicación de helipuertos sanitarios en Castilla y León, España.</span>
+                        <span class="project-desc">Python optimization for healthcare heliport placement in Castilla y León, Spain.</span>
                     </div>
                     <div class="project-meta">
                         <span class="project-lang">Python / HTML</span>
@@ -292,7 +325,7 @@
                 <a href="https://github.com/aiglea01/TSP" target="_blank" class="project-card">
                     <div class="project-info">
                         <span class="project-title">TSP Solver Algorithms</span>
-                        <span class="project-desc">Comparativa de diferentes algoritmos para resolver el Problema del Viajante (TSP).</span>
+                        <span class="project-desc">Comparison of different algorithms for solving the Traveling Salesperson Problem (TSP).</span>
                     </div>
                     <div class="project-meta">
                         <span class="project-lang">Jupyter Notebook</span>
@@ -302,7 +335,7 @@
                 <a href="https://github.com/scsaule/Connections" target="_blank" class="project-card">
                     <div class="project-info">
                         <span class="project-title">Connections Game</span>
-                        <span class="project-desc">Un clon del popular juego NYT Connections implementado en Java.</span>
+                        <span class="project-desc">A clone of the popular NYT Connections game, implemented in Java.</span>
                     </div>
                     <div class="project-meta">
                         <span class="project-lang">Java</span>
@@ -312,7 +345,7 @@
                 <a href="https://github.com/aiglea01/plant_caretaker" target="_blank" class="project-card">
                     <div class="project-info">
                         <span class="project-title">Plant Caretaker</span>
-                        <span class="project-desc">Proyecto Arduino para monitorizar el estado de una planta (humedad, luz, etc.).</span>
+                        <span class="project-desc">Arduino project for monitoring plant conditions (humidity, light, etc.).</span>
                     </div>
                     <div class="project-meta">
                         <span class="project-lang">C++</span>
@@ -323,7 +356,7 @@
         </section>
 
         <section>
-            <h2>Tecnologías y Herramientas</h2>
+            <h2>Technologies and Tools</h2>
             <div class="tech-list">
                 <span class="tech-tag">Python</span>
                 <span class="tech-tag">Java</span>
