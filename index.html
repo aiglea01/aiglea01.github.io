@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,12 +9,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #0d0d0d;
+            --bg-color: #080808;
+            --card-bg: #111;
             --text-main: #f2f2f2;
             --text-muted: #888888;
-            --accent: #333333;
-            --accent-hover: #444444;
-            --link-color: #e0e0e0;
+            
+            /* NUEVO COLOR DE ACENTO NARANJA VIBRANTE */
+            --accent-color: #ff9f43; /* Naranja tech moderno */
+            --accent-hover: #e68a2e;
+            
+            --border-muted: #222222;
+            --animation-speed: 0.6s;
         }
 
         * {
@@ -30,55 +35,85 @@
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             padding: 2rem;
+            opacity: 0;
+            animation: fadeInBody 1s ease-out forwards;
         }
 
         main {
-            max-width: 650px;
-            margin: 4rem auto;
+            max-width: 680px;
+            margin: 5rem auto;
         }
 
-        header {
-            margin-bottom: 4rem;
+        /* --- Animaciones Keyframes --- */
+        @keyframes fadeInBody {
+            to { opacity: 1; }
         }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- Estilos de Sección con Animación --- */
+        header, section, footer {
+            opacity: 0;
+            animation: slideInUp var(--animation-speed) ease-out forwards;
+        }
+
+        header { animation-delay: 0.2s; margin-bottom: 5rem; text-align: center;}
+        section:nth-of-type(1) { animation-delay: 0.4s; }
+        section:nth-of-type(2) { animation-delay: 0.6s; }
+        footer { animation-delay: 0.8s; }
 
         h1 {
-            font-size: 1.5rem;
+            font-size: 2.2rem;
             font-weight: 600;
             margin-bottom: 1rem;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.04em;
+            color: var(--text-main);
         }
 
         .bio {
             color: var(--text-muted);
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            max-width: 580px;
+            margin: 0 auto 1.5rem auto;
         }
 
         .bio a {
             color: var(--link-color);
             text-decoration: none;
-            border-bottom: 1px solid var(--accent);
-            transition: border-color 0.2s;
+            border-bottom: 1px solid var(--border-muted);
+            transition: all 0.3s ease;
         }
 
         .bio a:hover {
-            border-bottom-color: var(--link-color);
+            /* COLOR EN ENLACES DE BIO */
+            border-bottom-color: var(--accent-color);
+            color: var(--accent-color);
         }
 
         section {
-            margin-bottom: 3.5rem;
+            margin-bottom: 4rem;
         }
 
         h2 {
-            font-size: 1rem;
+            font-size: 0.85rem;
             font-weight: 500;
             color: var(--text-main);
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+            opacity: 0.6;
         }
 
+        /* --- Project Grid & Cards --- */
         .project-grid {
             display: flex;
             flex-direction: column;
@@ -88,161 +123,107 @@
         .project-card {
             display: flex;
             justify-content: space-between;
-            align-items: baseline;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--accent);
+            align-items: center;
+            padding: 1.5rem;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-muted);
+            border-radius: 12px;
             text-decoration: none;
             color: inherit;
-            transition: opacity 0.2s;
+            transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .project-card:hover {
-            opacity: 0.7;
+            transform: translateY(-4px);
+            /* COLOR EN BORDE Y SOMBRA DE TARJETA */
+            border-color: var(--accent-color);
+            background-color: #161616;
+            box-shadow: 0 8px 30px rgba(255, 159, 67, 0.1); /* Brillo sutil naranja */
         }
 
         .project-info {
             display: flex;
             flex-direction: column;
+            gap: 0.3rem;
         }
 
         .project-title {
-            font-weight: 500;
-            font-size: 1.05rem;
-            margin-bottom: 0.25rem;
+            font-weight: 600;
+            font-size: 1.15rem;
+            color: var(--text-main);
+            transition: color 0.3s ease;
+        }
+        
+        /* El título también cambia ligeramente de color en hover */
+        .project-card:hover .project-title {
+            color: #fff;
         }
 
         .project-desc {
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            max-width: 480px;
+        }
+
+        .project-meta {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.5rem;
+            margin-left: 1.5rem;
         }
 
         .project-lang {
             font-size: 0.8rem;
-            color: var(--text-muted);
-            background: var(--accent);
-            padding: 0.2rem 0.6rem;
-            border-radius: 12px;
+            font-weight: 600;
+            /* COLOR EN ETIQUETA DE LENGUAJE */
+            color: #000; /* Texto oscuro para contraste */
+            background: var(--accent-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
             white-space: nowrap;
-            margin-left: 1rem;
         }
 
+        /* --- Tech Tags --- */
         .tech-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.75rem;
         }
 
         .tech-tag {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
+            font-weight: 500;
             color: var(--text-muted);
-            border: 1px solid var(--accent);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
+            border: 1px solid var(--border-muted);
+            padding: 0.5rem 1.2rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            cursor: default;
+            background-color: rgba(255,255,255,0.02);
         }
 
+        .tech-tag:hover {
+            /* COLOR EN ETIQUETAS DE TECNOLOGÍA */
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            background-color: rgba(255, 159, 67, 0.03);
+            transform: scale(1.03);
+        }
+
+        /* --- Footer --- */
         footer {
-            margin-top: 5rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--accent);
+            margin-top: 6rem;
+            padding-top: 2.5rem;
+            border-top: 1px solid var(--border-muted);
             display: flex;
             justify-content: space-between;
+            align-items: center;
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
 
         footer a {
             color: var(--text-muted);
             text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        footer a:hover {
-            color: var(--text-main);
-        }
-
-        @media (max-width: 600px) {
-            .project-card {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .project-lang {
-                margin-left: 0;
-                margin-top: 0.5rem;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <main>
-        <header>
-            <h1>Álvaro Iglesias Ávila</h1>
-            <p class="bio">
-                Computer Science student at the <strong>Universidad de León</strong>. Passionate about cybersecurity and robotics. Currently expanding my knowledge alongside the Mobile Robotics Research Group. Striving to build efficient, optimized, and secure software.
-            </p>
-            <p class="bio">
-                <a href="https://github.com/aiglea01" target="_blank">github.com/aiglea01</a>
-            </p>
-        </header>
-
-        <section>
-            <h2>Featured Work</h2>
-            <div class="project-grid">
-                
-                <a href="https://github.com/scsaule/heliport-geoposition-optimization" target="_blank" class="project-card">
-                    <div class="project-info">
-                        <span class="project-title">Heliport Geoposition Optimization</span>
-                        <span class="project-desc">Python optimization for healthcare heliport placement in Castilla y León, Spain.</span>
-                    </div>
-                    <span class="project-lang">Python / HTML</span>
-                </a>
-
-                <a href="https://github.com/aiglea01/TSP" target="_blank" class="project-card">
-                    <div class="project-info">
-                        <span class="project-title">TSP Solver Algorithms</span>
-                        <span class="project-desc">Comparison of different algorithms for solving the Traveling Salesperson Problem.</span>
-                    </div>
-                    <span class="project-lang">Jupyter Notebook</span>
-                </a>
-
-                <a href="https://github.com/scsaule/Connections" target="_blank" class="project-card">
-                    <div class="project-info">
-                        <span class="project-title">Connections</span>
-                        <span class="project-desc">A clone of the popular NYT Connections game built in Java.</span>
-                    </div>
-                    <span class="project-lang">Java</span>
-                </a>
-
-                <a href="https://github.com/aiglea01/plant_caretaker" target="_blank" class="project-card">
-                    <div class="project-info">
-                        <span class="project-title">Plant Caretaker</span>
-                        <span class="project-desc">Arduino project to monitor plant state parameters like humidity and light.</span>
-                    </div>
-                    <span class="project-lang">C++</span>
-                </a>
-
-            </div>
-        </section>
-
-        <section>
-            <h2>Technologies</h2>
-            <div class="tech-list">
-                <span class="tech-tag">Python</span>
-                <span class="tech-tag">Java</span>
-                <span class="tech-tag">C / C++</span>
-                <span class="tech-tag">HTML</span>
-                <span class="tech-tag">CSS</span>
-                <span class="tech-tag">JavaScript</span>
-                <span class="tech-tag">Git</span>
-                <span class="tech-tag">Arduino</span>
-            </div>
-        </section>
-
-        <footer>
-            <span>© 2026 Álvaro Iglesias Ávila</span>
-            <a href="mailto:aiglea01@estudiantes.unileon.es">aiglea01@estudiantes.unileon.es</a>
-        </footer>
-    </main>
-
-</body>
-</html>
