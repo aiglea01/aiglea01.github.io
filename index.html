@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Álvaro Iglesias Ávila | aiglea01</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0d0d0d;
+            --text-main: #f2f2f2;
+            --text-muted: #888888;
+            --accent: #333333;
+            --accent-hover: #444444;
+            --link-color: #e0e0e0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            padding: 2rem;
+        }
+
+        main {
+            max-width: 650px;
+            margin: 4rem auto;
+        }
+
+        header {
+            margin-bottom: 4rem;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .bio {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .bio a {
+            color: var(--link-color);
+            text-decoration: none;
+            border-bottom: 1px solid var(--accent);
+            transition: border-color 0.2s;
+        }
+
+        .bio a:hover {
+            border-bottom-color: var(--link-color);
+        }
+
+        section {
+            margin-bottom: 3.5rem;
+        }
+
+        h2 {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-main);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.85rem;
+        }
+
+        .project-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--accent);
+            text-decoration: none;
+            color: inherit;
+            transition: opacity 0.2s;
+        }
+
+        .project-card:hover {
+            opacity: 0.7;
+        }
+
+        .project-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-title {
+            font-weight: 500;
+            font-size: 1.05rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .project-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .project-lang {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            background: var(--accent);
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            white-space: nowrap;
+            margin-left: 1rem;
+        }
+
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border: 1px solid var(--accent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+        }
+
+        footer {
+            margin-top: 5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--accent);
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        footer a:hover {
+            color: var(--text-main);
+        }
+
+        @media (max-width: 600px) {
+            .project-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .project-lang {
+                margin-left: 0;
+                margin-top: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <main>
+        <header>
+            <h1>Álvaro Iglesias Ávila</h1>
+            <p class="bio">
+                Computer Science student at the <strong>Universidad de León</strong>. Passionate about cybersecurity and robotics. Currently expanding my knowledge alongside the Mobile Robotics Research Group. Striving to build efficient, optimized, and secure software.
+            </p>
+            <p class="bio">
+                <a href="https://github.com/aiglea01" target="_blank">github.com/aiglea01</a>
+            </p>
+        </header>
+
+        <section>
+            <h2>Featured Work</h2>
+            <div class="project-grid">
+                
+                <a href="https://github.com/scsaule/heliport-geoposition-optimization" target="_blank" class="project-card">
+                    <div class="project-info">
+                        <span class="project-title">Heliport Geoposition Optimization</span>
+                        <span class="project-desc">Python optimization for healthcare heliport placement in Castilla y León, Spain.</span>
+                    </div>
+                    <span class="project-lang">Python / HTML</span>
+                </a>
+
+                <a href="https://github.com/aiglea01/TSP" target="_blank" class="project-card">
+                    <div class="project-info">
+                        <span class="project-title">TSP Solver Algorithms</span>
+                        <span class="project-desc">Comparison of different algorithms for solving the Traveling Salesperson Problem.</span>
+                    </div>
+                    <span class="project-lang">Jupyter Notebook</span>
+                </a>
+
+                <a href="https://github.com/scsaule/Connections" target="_blank" class="project-card">
+                    <div class="project-info">
+                        <span class="project-title">Connections</span>
+                        <span class="project-desc">A clone of the popular NYT Connections game built in Java.</span>
+                    </div>
+                    <span class="project-lang">Java</span>
+                </a>
+
+                <a href="https://github.com/aiglea01/plant_caretaker" target="_blank" class="project-card">
+                    <div class="project-info">
+                        <span class="project-title">Plant Caretaker</span>
+                        <span class="project-desc">Arduino project to monitor plant state parameters like humidity and light.</span>
+                    </div>
+                    <span class="project-lang">C++</span>
+                </a>
+
+            </div>
+        </section>
+
+        <section>
+            <h2>Technologies</h2>
+            <div class="tech-list">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Java</span>
+                <span class="tech-tag">C / C++</span>
+                <span class="tech-tag">HTML</span>
+                <span class="tech-tag">CSS</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">Git</span>
+                <span class="tech-tag">Arduino</span>
+            </div>
+        </section>
+
+        <footer>
+            <span>© 2026 Álvaro Iglesias Ávila</span>
+            <a href="mailto:aiglea01@estudiantes.unileon.es">aiglea01@estudiantes.unileon.es</a>
+        </footer>
+    </main>
+
+</body>
+</html>
