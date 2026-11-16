@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5f0">
+  <meta name="description" content="Chronix es un organizador personal autoalojado con calendarios, notas, relojes y lectura de Google Calendar. Información y privacidad del proyecto.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Chronix · Tu tiempo en un solo lugar">
+  <meta property="og:description" content="Agenda, notas y relojes en una aplicación personal autoalojada.">
+  <link rel="canonical" href="https://aiglea01.github.io/chronix/">
+  <link rel="icon" type="image/svg+xml" href="./chronix.svg">
+  <link rel="stylesheet" href="./styles.css">
+  <title>Chronix — Organización personal</title>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Ir al contenido</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="./" aria-label="Chronix, inicio"><img src="./chronix.svg" alt="" width="38" height="38"><span>chronix<span class="brand-dot">.</span></span></a>
+      <nav class="nav" aria-label="Navegación principal">
+        <a href="#funciones">Funciones</a>
+        <a href="#funcionamiento">Cómo funciona</a>
+        <a href="./privacy.html">Privacidad</a>
+      </nav>
+      <a class="top-link" href="https://github.com/aiglea01/chronix" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="hero container">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="signal" aria-hidden="true"></span> Proyecto personal · Versión 0.2.0</div>
+        <h1>El tiempo, <em>a tu manera.</em></h1>
+        <p class="hero-description">Chronix reúne agenda, calendarios, notas y relojes en una interfaz pensada para concentrarte en lo importante. Un proyecto personal que se ejecuta en infraestructura propia.</p>
+        <div class="actions">
+          <a class="button primary" href="https://github.com/aiglea01/chronix" rel="noopener noreferrer">Explorar el código <span aria-hidden="true">↗</span></a>
+          <a class="button secondary" href="./privacy.html">Cómo tratamos los datos <span aria-hidden="true">→</span></a>
+        </div>
+        <p class="subnote">Esta web presenta el proyecto; no es la aplicación ni ofrece un registro público. La instancia personal utiliza acceso privado mediante Tailscale.</p>
+      </div>
+      <div class="preview" aria-label="Representación ilustrativa del panel de Chronix">
+        <div class="preview-header"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><strong>chronix</strong><span>Mi espacio</span></div>
+        <div class="preview-layout">
+          <aside class="preview-side" aria-hidden="true"><span class="selected">▦ &nbsp; Panel diario</span><span>▤ &nbsp; Calendario</span><span>▣ &nbsp; Notas</span><span>◷ &nbsp; Relojes</span></aside>
+          <div class="preview-body">
+            <div class="preview-date">HOY · TU ESPACIO PERSONAL</div>
+            <h2>Un día más claro.</h2>
+            <div class="preview-clock">09<span>:</span>41<small> LUNES</small></div>
+            <div class="preview-grid">
+              <div class="mock-tile"><span>PRÓXIMOS EVENTOS</span><strong>Planificar la semana</strong><p>09:00 – 10:00</p><div class="tiny-line"></div><strong>Revisión de tareas</strong><p>14:00 – 15:00</p></div>
+              <div class="mock-tile"><span>NOTAS</span><strong>Ideas para hoy</strong><p>Un espacio para reunir tus próximos pasos y mantener todo organizado.</p><div class="mock-label">Notas personales</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="funciones" class="section container">
+      <div class="section-heading"><p class="kicker">LO QUE OFRECE</p><h2>Todo lo esencial, <span>sin ruido.</span></h2><p>Funciones ya presentes en Chronix 0.2.0.</p></div>
+      <div class="features">
+        <article class="feature"><div class="feature-icon">▦</div><h3>Calendarios y agenda</h3><p>Consulta los eventos por día o mes y crea eventos en tus calendarios propios.</p></article>
+        <article class="feature"><div class="feature-icon">▤</div><h3>Notas y recordatorios escritos</h3><p>Guarda apuntes, busca por contenido y fija tus notas importantes.</p></article>
+        <article class="feature"><div class="feature-icon">◷</div><h3>Relojes y presentación</h3><p>Relojes analógico y digital con modo de pantalla completa.</p></article>
+        <article class="feature"><div class="feature-icon">⇄</div><h3>Sincronización propia</h3><p>Guarda eventos y notas en una base SQLite de tu servidor, asociados a tu cuenta.</p></article>
+        <article class="feature"><div class="feature-icon">◎</div><h3>Google Calendar</h3><p>Visualiza los calendarios de las cuentas autorizadas con permisos de solo lectura.</p></article>
+        <article class="feature"><div class="feature-icon">▣</div><h3>Experiencia PWA</h3><p>Se puede instalar desde un navegador compatible y abrir sin conexión tras la primera carga.</p></article>
+      </div>
+    </section>
+
+    <section id="funcionamiento" class="section section-soft">
+      <div class="container split">
+        <div><p class="kicker">DISEÑADO PARA CONTROLAR TUS DATOS</p><h2>Una app que funciona en tu infraestructura.</h2><p>La interfaz y la API se ejecutan en un servidor propio. El acceso a la instancia personal está protegido por una red privada. La autorización de Google se utiliza para identificar al usuario y, si lo acepta, consultar sus calendarios.</p></div>
+        <div class="steps" aria-label="Funcionamiento de Chronix">
+          <div class="step"><span>01</span><div><h3>Inicia sesión con Google</h3><p>Chronix obtiene la identidad de la cuenta autenticada.</p></div></div>
+          <div class="step"><span>02</span><div><h3>Conecta tus calendarios si quieres</h3><p>El permiso de Calendar es independiente y de solo lectura.</p></div></div>
+          <div class="step"><span>03</span><div><h3>Continúa en tus dispositivos</h3><p>Los datos propios se sincronizan con tu servidor; el navegador conserva una copia local para trabajar sin conexión.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container final-cta">
+      <div><p class="kicker">TRANSPARENCIA</p><h2>Tus datos merecen una explicación clara.</h2><p>Consulta qué datos de Google utiliza Chronix, dónde se conservan y cómo puedes revocar el acceso.</p></div>
+      <a class="button primary" href="./privacy.html">Leer la política de privacidad <span aria-hidden="true">→</span></a>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-inner"><div><strong>chronix.</strong><small>Proyecto personal · Alojamiento informativo en GitHub Pages</small></div><div class="footer-links"><a href="./privacy.html">Privacidad</a><a href="https://github.com/aiglea01/chronix">Repositorio</a><a href="mailto:alvaroiglesiasavila01@gmail.com">Contacto</a></div><small>© 2026 Chronix</small></div></footer>
+</body>
+</html>
